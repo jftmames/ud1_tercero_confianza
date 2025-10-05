@@ -198,7 +198,7 @@ with tabs[0]:
                 "Régimen de PSC y políticas de la red"
             ]
         })
-        st.dataframe(df, use_container_width=True)
+        st.dataframe(df, width="stretch")
     st.info("Idea clave: **diseños híbridos**. La cadena prueba integridad/tiempo; la fe pública y la capacidad siguen siendo jurídicas.")
 
 
@@ -237,7 +237,7 @@ with tabs[1]:
         "Capa jurídica": ["Notaría", "Notaría", "Protocolo", "Diligencia/TSA cualificada", "Registro", "Archivo/Expediente", "Régimen público"],
         "Capa técnica": ["PKI (certificados)", "—", "Hash (SHA-256)", "TSA / anclaje", "Ledger (difusión técnica)", "Logs / backups", "Políticas PSC / red"]
     })
-    st.dataframe(integ, use_container_width=True)
+    st.dataframe(integ, width="stretch")
 
 
 # ========= Pestaña 3: Trust-Mapper =========
@@ -276,9 +276,9 @@ with tabs[2]:
             st.checkbox("Publicidad/inscripción (si procede)", value=False)
         with t2:
             st.markdown("##### Criptográfico")
-            c_hash = st.checkbox("Hash calculado (integridad)", value=True, disabled=True)
-            c_time = st.checkbox("Marca de tiempo (TSA) aplicada", value=False)
-            c_chain = st.checkbox("Anclaje en cadena (registro técnico)", value=False)
+            st.checkbox("Hash calculado (integridad)", value=True, disabled=True)
+            st.checkbox("Marca de tiempo (TSA) aplicada", value=False)
+            st.checkbox("Anclaje en cadena (registro técnico)", value=False)
 
         st.markdown("**Generar paquete de evidencia**")
         if st.button("Crear evidencia (JSON)"):
@@ -368,7 +368,7 @@ with tabs[3]:
         st.divider()
 
     df_raci = pd.DataFrame(rows_out)
-    st.dataframe(df_raci, use_container_width=True)
+    st.dataframe(df_raci, width="stretch")
 
     csv_bytes = df_raci.to_csv(index=False).encode("utf-8")
     st.download_button("Descargar RACI (.csv)", io.BytesIO(csv_bytes), file_name="raci_ud1.csv", mime="text/csv")
@@ -418,6 +418,7 @@ with tabs[5]:
             "Registro del hash en una transacción/bloque de una red blockchain."
         ]
     })
-    st.dataframe(glos, use_container_width=True)
+    st.dataframe(glos, width="stretch")
 
     st.caption("Aviso: la app es docente; no reemplaza servicios cualificados ni supone asesoramiento jurídico.")
+
